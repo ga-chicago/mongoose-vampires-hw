@@ -107,49 +107,96 @@ const victimsArray = [22, 849, 49, 29291];
 
 
 
-Vampire.find({
-	victims: {
-		$lte: 150
-	}
-}, (err, response) => {
-	if(err) {
-		console.log(err);
-	} else {
-		console.log('LTE 150', response);
-	}
-});
+// Vampire.find({
+// 	victims: {
+// 		$lte: 150
+// 	}
+// }, (err, response) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log('LTE 150', response);
+// 	}
+// });
 
-Vampire.find({
-	victims: {
-		$ne: 210234
-	}
-}, (err, response) => {
-	if(err) {
-		console.log(err);
-	} else {
-		console.log('!=210234', response);
-	}
-})
+// Vampire.find({
+// 	victims: {
+// 		$ne: 210234
+// 	}
+// }, (err, response) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log('!=210234', response);
+// 	}
+// })
 
 
-Vampire.find({
-	victims: {
-		$gt: 150,
-		$lt: 500
-	}
-}, (err, response) => {
-	if(err) {
-		console.log(err);
-	} else {
-		console.log('GT 150 && LT 500', response);
-	}
-})
+// Vampire.find({
+// 	victims: {
+// 		$gt: 150,
+// 		$lt: 500
+// 	}
+// }, (err, response) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log('GT 150 && LT 500', response);
+// 	}
+// })
 
 
 
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
+
+
+
+Vampire.find({
+	title: {$exists: true}
+}, (err, response) => {
+	if(err) {
+		console.log('title exists', err)
+	} else {
+		console.log(response)
+	}
+})
+
+Vampire.find({
+	victims: {$exists: false}
+}, (err, response) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log("victims don't exist", response);
+	}
+})
+
+
+Vampire.find({
+	victims: {$exists: false},
+	title: {$exists: true}
+}, (err, response) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log("have title and no victims", response);
+	}
+})
+
+Vampire.find({
+	victims: {$exists: true, $gt: 1000}
+}, (err, response) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log("have victims and victims GT 1000", response);
+	}
+})
+
+
+
 
 /////////////////////////////////////////////////
 // ### Select with OR
