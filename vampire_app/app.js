@@ -35,13 +35,13 @@ db.on('connected', () => {
 const VampireArray = require('./populateVampires');
 
 
-Vampire.create(VampireArray, (err, response) => {
-	if(err) {
-		console.log(err, ' There was an error');
-	} else {
-		console.log(response, ' Success!');
-	}
-})
+// Vampire.create(VampireArray, (err, response) => {
+// 	if(err) {
+// 		console.log(err, ' There was an error');
+// 	} else {
+// 		console.log(response, ' Success!');
+// 	}
+// })
 
 
 // ### Add some new vampire data
@@ -60,29 +60,93 @@ const genderArray = ['m' , 'f', 'f', 'm'];
 const victimsArray = [22, 849, 49, 29291];
 
 
-for(i = 0; i < 4; i ++){
-	Vampire.create({
-		hair_color: hairColorArray[i],
-		loves: lovesArray[i],
-		name: nameArray[i],
-		dob: dobArray[i],
-		eye_color: eye_colorArray[i], 
-		location: locationArray[i],
-		gender: genderArray[i],
-		victims: victimsArray[i],
-	}, (err, response) => {
-		if(err) {
-			console.log(err);
-		} else {
-			console.log(response);
-		}
-	})
-}
+// for(i = 0; i < 4; i ++){
+// 	Vampire.create({
+// 		hair_color: hairColorArray[i],
+// 		loves: lovesArray[i],
+// 		name: nameArray[i],
+// 		dob: dobArray[i],
+// 		eye_color: eye_colorArray[i], 
+// 		location: locationArray[i],
+// 		gender: genderArray[i],
+// 		victims: victimsArray[i],
+// 	}, (err, response) => {
+// 		if(err) {
+// 			console.log(err);
+// 		} else {
+// 			console.log(response);
+// 		}
+// 	})
+// }
 
 /////////////////////////////////////////////////
 // ## QUERYING
 /////////////////////////////////////////////////
 // ### Select by comparison
+
+// Vampire.find({gender: 'f'}, (err, response) => {
+// 	if(err) {
+// 		console.log(err)
+// 	} else {
+// 		console.log('Gender F'response)
+// 	}
+// });
+
+// Vampire.find(
+// 	{victims: 
+// 		{$gt: 500}
+// 	}
+// , (err, response) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log('GT 500'response);
+// 	}
+// });
+
+
+
+
+Vampire.find({
+	victims: {
+		$lte: 150
+	}
+}, (err, response) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log('LTE 150', response);
+	}
+});
+
+Vampire.find({
+	victims: {
+		$ne: 210234
+	}
+}, (err, response) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log('!=210234', response);
+	}
+})
+
+
+Vampire.find({
+	victims: {
+		$gt: 150,
+		$lt: 500
+	}
+}, (err, response) => {
+	if(err) {
+		console.log(err);
+	} else {
+		console.log('GT 150 && LT 500', response);
+	}
+})
+
+
+
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
