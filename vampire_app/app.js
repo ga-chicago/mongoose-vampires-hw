@@ -407,85 +407,85 @@ const victimsArray = [22, 849, 49, 29291];
 /////////////////////////////////////////////////
 // ## UPDATE
 
-Vampire.findOneAndUpdate(
-	{name: 'Guy Man'},
-	{$set: {gender: 'f'} }, 
-	{new: true},
-	(err, response) => {
-		if(err) {
-			console.log(err);
-		} else {
-			console.log(response);
-		}
-	}
-)
+// Vampire.findOneAndUpdate(
+// 	{name: 'Guy Man'},
+// 	{$set: {gender: 'f'} }, 
+// 	{new: true},
+// 	(err, response) => {
+// 		if(err) {
+// 			console.log(err);
+// 		} else {
+// 			console.log(response);
+// 		}
+// 	}
+// )
 
-Vampire.findOneAndUpdate(
-	{name: 'Eve'},
-	{$set: {gender: 'm'}}, 
-	{new: true},
-	(err, response) => {
-		if(err) {
-			console.log(err);
-		} else {
-			console.log(response);
-		}
-	}
-)
-
-
-Vampire.findOneAndUpdate(
-	{name: 'Guy Man'},
-	{$set: {hates: ['clothes', 'jobs']}},
-	{new: true},
-	(err, response) => {
-		if(err) {
-			console.log(err);
-		} else {
-			console.log(response);
-		}
-	}
-)
+// Vampire.findOneAndUpdate(
+// 	{name: 'Eve'},
+// 	{$set: {gender: 'm'}}, 
+// 	{new: true},
+// 	(err, response) => {
+// 		if(err) {
+// 			console.log(err);
+// 		} else {
+// 			console.log(response);
+// 		}
+// 	}
+// )
 
 
-Vampire.findOneAndUpdate(
-	{name: 'Guy Man'},
-	{$push: {hates: ['alarm clocks', 'jackalopes']}}, 
-	(err, response) => {
-		if(err) {
-			console.log(err);
-		} else {
-			console.log(response);
-		}
-	}
-)
-
-Vampire.findOneAndUpdate(
-	{name: 'Eve'},
-	{$rename: {'name': 'moniker'}},
-	{new: true},
-	(err, response) => {
-		if(err) {
-			console.log(err);
-		} else {
-			console.log(response);
-		}
-	}
-)
+// Vampire.findOneAndUpdate(
+// 	{name: 'Guy Man'},
+// 	{$set: {hates: ['clothes', 'jobs']}},
+// 	{new: true},
+// 	(err, response) => {
+// 		if(err) {
+// 			console.log(err);
+// 		} else {
+// 			console.log(response);
+// 		}
+// 	}
+// )
 
 
-Vampire.update(
-	{gender: 'f'},
-	{$set: {gender: 'fem'}},
-	{multi: true, new: true},
-	(err, response) => {
-		if(err) {
-			console.log(err);
-		} else {
-			console.log(response);
-		}
-	}
-)
+// Vampire.findOneAndUpdate(
+// 	{name: 'Guy Man'},
+// 	{$push: {hates: ['alarm clocks', 'jackalopes']}}, 
+// 	(err, response) => {
+// 		if(err) {
+// 			console.log(err);
+// 		} else {
+// 			console.log(response);
+// 		}
+// 	}
+// )
+
+// Vampire.findOneAndUpdate(
+// 	{name: 'Eve'},
+// 	{$rename: {'name': 'moniker'}},
+// 	{new: true},
+// 	(err, response) => {
+// 		if(err) {
+// 			console.log(err);
+// 		} else {
+// 			console.log(response);
+// 		}
+// 	}
+// )
+
+
+// Vampire.update(
+// 	{gender: 'f'},
+// 	{$set: {gender: 'fem'}},
+// 	{multi: true, new: true},
+// 	(err, response) => {
+// 		if(err) {
+// 			console.log(err);
+// 		} else {
+// 			console.log(response);
+// 		}
+// 	}
+// )
 
 
 
@@ -493,6 +493,31 @@ Vampire.update(
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REMOVE
+
+Vampire.findOneAndRemove(
+	{hair_color: 'brown'},
+	(err, response) => {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log(response);
+		}
+	}
+)
+
+Vampire.remove(
+	{eye_color: 'blue'},
+	//{multi: true}, 
+	(err, response) => {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log(response);
+		}
+	}
+)
+
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
