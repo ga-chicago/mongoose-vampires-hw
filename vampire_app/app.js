@@ -377,35 +377,118 @@ const victimsArray = [22, 849, 49, 29291];
 // ## REPLACE
 
 
- // Vampire.update(
- // 	{name: 'Claudia'}, 
- // 	{$set: {name: 'Eve', portrayed_by: 'Tilda Swinton'}}, 
- // 	(err, response) => {
- // 		if(err) {
- // 			console.log(err);
- // 		} else {
- // 			console.log("replaced EVE with stuff", response);
- // 		}
- // })
+//  Vampire.update(
+//  	{name: 'Claudia'}, 
+//  	{$set: {name: 'Eve', portrayed_by: 'Tilda Swinton'}}, 
+//  	(err, response) => {
+//  		if(err) {
+//  			console.log(err);
+//  		} else {
+//  			console.log("replaced EVE with stuff", response);
+//  		}
+//  })
 
-Vampire.findOneAndUpdate(
-	{gender: 'm'},
-	{$set: {name: 'Guy Man', is_actually: 'were-lizard'}}, 
-	{new: true}, 
-	(err, response) => {
-		if(err) {
-			console.log(err);
-		} else {
-			console.log(response)
-		}
-	}
-)
+// Vampire.findOneAndUpdate(
+// 	{gender: 'm'},
+// 	{$set: {name: 'Guy Man', is_actually: 'were-lizard'}}, 
+// 	{new: true}, 
+// 	(err, response) => {
+// 		if(err) {
+// 			console.log(err);
+// 		} else {
+// 			console.log(response);
+// 		}
+// 	}
+// )
 
 
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## UPDATE
+
+Vampire.findOneAndUpdate(
+	{name: 'Guy Man'},
+	{$set: {gender: 'f'} }, 
+	{new: true},
+	(err, response) => {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log(response);
+		}
+	}
+)
+
+Vampire.findOneAndUpdate(
+	{name: 'Eve'},
+	{$set: {gender: 'm'}}, 
+	{new: true},
+	(err, response) => {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log(response);
+		}
+	}
+)
+
+
+Vampire.findOneAndUpdate(
+	{name: 'Guy Man'},
+	{$set: {hates: ['clothes', 'jobs']}},
+	{new: true},
+	(err, response) => {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log(response);
+		}
+	}
+)
+
+
+Vampire.findOneAndUpdate(
+	{name: 'Guy Man'},
+	{$push: {hates: ['alarm clocks', 'jackalopes']}}, 
+	(err, response) => {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log(response);
+		}
+	}
+)
+
+Vampire.findOneAndUpdate(
+	{name: 'Eve'},
+	{$rename: {'name': 'moniker'}},
+	{new: true},
+	(err, response) => {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log(response);
+		}
+	}
+)
+
+
+Vampire.update(
+	{gender: 'f'},
+	{$set: {gender: 'fem'}},
+	{multi: true, new: true},
+	(err, response) => {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log(response);
+		}
+	}
+)
+
+
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
