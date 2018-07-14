@@ -327,54 +327,81 @@ const victimsArray = [22, 849, 49, 29291];
 /////////////////////////////////////////////////
 //### Negative Selection
 
-Vampire.find({
-	$and: [{
-		loves: 'ribbons'
-	}, {
-		eye_color: {$nin: ['brown']}
-	}]
-}, (err, response) => {
-	if(err) {
-		console.log(err)
-	} else {
-		console.log("loves ribbons NIN brown eyes", response)
-	}
-})
+// Vampire.find({
+// 	$and: [{
+// 		loves: 'ribbons'
+// 	}, {
+// 		eye_color: {$nin: ['brown']}
+// 	}]
+// }, (err, response) => {
+// 	if(err) {
+// 		console.log(err)
+// 	} else {
+// 		console.log("loves ribbons NIN brown eyes", response)
+// 	}
+// })
 
-Vampire.find({
-	location: {$nin: 'Rome'}
-}, (err, response) => {
-	if(err) {
-		console.log(err);
-	} else {
-		console.log('Not from Rome', response)
-	}
-})
+// Vampire.find({
+// 	location: {$nin: 'Rome'}
+// }, (err, response) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log('Not from Rome', response)
+// 	}
+// })
 
-Vampire.find({
-	loves: {$nin: ['fancy cloaks', 'frilly shirtsleeves', 'appearing innocent', 'being tragic', 'brooding']}
-}, (err, response) => {
-	if(err) {
-		console.log(err);
-	} else {
-		console.log("doesn't love long list", response);
-	}
-})
+// Vampire.find({
+// 	loves: {$nin: ['fancy cloaks', 'frilly shirtsleeves', 'appearing innocent', 'being tragic', 'brooding']}
+// }, (err, response) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log("doesn't love long list", response);
+// 	}
+// })
 
 
-Vampire.find({
-	victims: {$lte: 200}
-}, (err, response) => {
-	if(err) {
-		console.log(err);
-	} else {
-		console.log('victims LTE 200', response);
-	}
-})
+// Vampire.find({
+// 	victims: {$lte: 200}
+// }, (err, response) => {
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log('victims LTE 200', response);
+// 	}
+// })
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REPLACE
+
+
+ // Vampire.update(
+ // 	{name: 'Claudia'}, 
+ // 	{$set: {name: 'Eve', portrayed_by: 'Tilda Swinton'}}, 
+ // 	(err, response) => {
+ // 		if(err) {
+ // 			console.log(err);
+ // 		} else {
+ // 			console.log("replaced EVE with stuff", response);
+ // 		}
+ // })
+
+Vampire.findOneAndUpdate(
+	{gender: 'm'},
+	{$set: {name: 'Guy Man', is_actually: 'were-lizard'}}, 
+	{new: true}, 
+	(err, response) => {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log(response)
+		}
+	}
+)
+
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
